@@ -127,32 +127,33 @@ class _MyHomeState extends State<MyHome> {
                                   final key =
                                       todosModel.items.keys.elementAt(index);
                                   final item = todosModel.items[key]!;
-                                  return Slidable(
-                                    // The end action pane is the one at the right or the bottom side.
-                                    endActionPane: ActionPane(
-                                      motion: const ScrollMotion(),
-                                      children: [
-                                        SlidableAction(
-                                          // An action can be bigger than the others.
-                                          onPressed: (context) {
-                                            todosModel.delete(item.id);
-                                            setState(() {
-                                              todosModel.items.remove(item.id);
-                                            });
-                                          },
+                                  return Container(
+                                    margin: const EdgeInsets.only(bottom: 16),
+                                    height: sizeH * .1,
+                                    width: sizeW,
+                                    child: Slidable(
+                                      // The end action pane is the one at the right or the bottom side.
+                                      endActionPane: ActionPane(
+                                        motion: const ScrollMotion(),
+                                        children: [
+                                          SlidableAction(
+                                            // An action can be bigger than the others.
+                                            onPressed: (context) {
+                                              todosModel.delete(item.id);
+                                              setState(() {
+                                                todosModel.items
+                                                    .remove(item.id);
+                                              });
+                                            },
 
-                                          backgroundColor:
-                                              const Color(0xFFFE4A49),
-                                          foregroundColor: Colors.white,
-                                          icon: Icons.delete,
-                                          label: 'Delete',
-                                        ),
-                                      ],
-                                    ),
-                                    child: Container(
-                                      margin: const EdgeInsets.only(bottom: 16),
-                                      height: sizeH * .1,
-                                      width: sizeW,
+                                            backgroundColor:
+                                                const Color(0xFFFE4A49),
+                                            foregroundColor: Colors.white,
+                                            icon: Icons.delete,
+                                            label: 'Delete',
+                                          ),
+                                        ],
+                                      ),
                                       child: MyCard(todo: item),
                                     ),
                                   );

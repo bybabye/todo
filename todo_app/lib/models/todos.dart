@@ -9,6 +9,7 @@ import 'package:todo_app/models/todo.dart';
 class Todos with ChangeNotifier {
   final db = Localstore.instance;
   final items = <String, Todo>{};
+  // ignore: unused_field
   late StreamSubscription<Map<String, dynamic>>? _subscription;
   DateTime dt = DateTime.now();
   Todos() {
